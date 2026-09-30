@@ -1,0 +1,1 @@
+export function PageBio() {return(<div>Pagina 2</div>)}
