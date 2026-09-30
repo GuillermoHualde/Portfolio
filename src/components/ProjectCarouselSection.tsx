@@ -49,10 +49,10 @@ const PROJECTS: ProjectCard[] = [
     },
     {
         id: "05",
-        title: "Veterinario",
-        category: "Java y JavaFX",
-        imageUrl: "src/assets/Veterinario.PNG",
-        link: "https://github.com/GuillermoHualde/Veterinarionp",
+        title: "Pagina web Portfolio",
+        category: "TypeScript, React",
+        imageUrl: "src/assets/Portfolio.PNG",
+        link: "https://github.com/GuillermoHualde/Portfolio",
         aspectRatio: "aspect-[16/9]",
         rotation: 5,
     },
@@ -79,7 +79,7 @@ export function ProjectCarouselSection() {
                     <h2 className="md:col-span-8 text-4xl sm:text-6xl font-medium tracking-tighter leading-none uppercase text-[#f5ecc2]">
                         Código & Diseño
                     </h2>
-                    <p className="md:col-span-4 font-mono text-xs text-[#f5ecc2] leading-relaxed">
+                    <p className="md:col-span-4 font-mono text-6 text-[#f5ecc2] leading-relaxed">
                         Haz clic en cualquier tarjeta para explorar el código fuente, la arquitectura y los detalles en GitHub.
                     </p>
                 </div>
