@@ -27,6 +27,7 @@ export function Header() {
                 <nav className="flex items-center gap-1 bg-neutral-900/90 backdrop-blur-md border border-neutral-800 p-1.5 rounded-full shadow-2xl">
                     <NavLink
                         to="/"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
                         end
                         className={({ isActive }) =>
                             `px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all ${
@@ -41,6 +42,7 @@ export function Header() {
 
                     <NavLink
                         to="/portfolio"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
                         className={({ isActive }) =>
                             `px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all ${
                                 isActive
@@ -54,6 +56,7 @@ export function Header() {
 
                     <NavLink
                         to="/bio"
+                        onClick={() => window.scrollTo({ top: 0, behavior: "auto" })}
                         className={({ isActive }) =>
                             `px-4 py-1.5 rounded-full text-xs md:text-sm font-medium transition-all ${
                                 isActive
