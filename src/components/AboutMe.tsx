@@ -67,7 +67,7 @@ export function AboutMeSection() {
                                 {/* Contenedor de la Imagen */}
                                 <div className="relative w-full flex-1 rounded-lg overflow-hidden my-2 border border-[#3B5249]/40">
                                     <img
-                                        src="src/assets/GuilleFotoReal.jpg"
+                                        src="../assets/GuilleFotoReal.jpg"
                                         alt="Guillermo García Hualde"
                                         className="w-full h-full object-cover contrast-110 group-hover:scale-105 transition-transform duration-500"
                                     />
