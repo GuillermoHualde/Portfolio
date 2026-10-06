@@ -65,7 +65,7 @@ export function HeroCanvas() {
                         className="absolute bottom-[5%] left-[25%] w-56 aspect-[3/4]  rounded-2xl p-3  overflow-hidden"
                     >
                         <img
-                            src="../assets/GuilleFoto.png"
+                            src="src/assets/GuilleFoto.png"
                             alt="Guillermo García"
                             className="w-full h-full object-cover"
                         />
