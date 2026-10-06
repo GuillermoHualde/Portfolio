@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import GuilleFoto from "../assets/GuilleFoto.png";
 
 export function HeroCanvas() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +66,7 @@ export function HeroCanvas() {
                         className="absolute bottom-[5%] left-[25%] w-56 aspect-[3/4]  rounded-2xl p-3  overflow-hidden"
                     >
                         <img
-                            src="src/assets/GuilleFoto.png"
+                            src= {GuilleFoto}
                             alt="Guillermo García"
                             className="w-full h-full object-cover"
                         />

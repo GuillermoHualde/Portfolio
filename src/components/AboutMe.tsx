@@ -1,3 +1,5 @@
+import GuilleFoto from "../assets/GuilleFotoReal.jpg";
+
 export function AboutMeSection() {
     return (
         <section className="bg-[#f5ecc2] text-[#547076] py-24 md:py-32 border-t border-[#3B5249]/40 overflow-hidden">
@@ -52,11 +54,11 @@ export function AboutMeSection() {
                         </div>
                     </div>
 
-                    {/* COLUMNA DERECHA: FOTO CON ESTILO POSTAL/TARJETA */}
+                    {/* COLUMNA DERECHA: FOTO*/}
                     <div className="lg:col-span-5 flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-sm aspect-[3/4] group">
 
-                            {/* Marco Decorativo Trasero (Efecto Capa) */}
+                            {/* Marco Decorativo Trasero */}
                             <div className="absolute inset-0 bg-[#547076]/20 rounded-2xl transform rotate-3 scale-95 group-hover:rotate-6 transition-transform duration-300"></div>
 
                             {/* Tarjeta Principal */}
@@ -67,7 +69,7 @@ export function AboutMeSection() {
                                 {/* Contenedor de la Imagen */}
                                 <div className="relative w-full flex-1 rounded-lg overflow-hidden my-2 border border-[#3B5249]/40">
                                     <img
-                                        src="../assets/GuilleFotoReal.jpg"
+                                        src={GuilleFoto}
                                         alt="Guillermo García Hualde"
                                         className="w-full h-full object-cover contrast-110 group-hover:scale-105 transition-transform duration-500"
                                     />

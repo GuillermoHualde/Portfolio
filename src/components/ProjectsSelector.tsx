@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import blockexFoto from "../assets/BlockexFoto.jpeg";
+import javaSqlFoto from "../assets/JavaSql.jpg";
+import portFoliArtFoto from "../assets/PortFoliArt.jpeg";
+import registroBibliotecaFoto from "../assets/RegistroBibliotecaFX.png";
+import portfolioFoto from "../assets/PortfolioWeb.png";
 interface Project {
     id: string;
     title: string;
@@ -24,7 +28,7 @@ const PROJECTS: Project[] = [
         tech: ["Kotlin", "Jetpack Compose", "Room DB", "REST API"],
         description: "Aplicación móvil para gestión de activos digitales.",
         longDescription: "Desarrollada nativamente para Android. Enfocada en ofrecer una interfaz ágil, reactiva y limpia con persistencia de datos local y sincronización en tiempo real.",
-        imageUrl: "/assets/BlockexFoto.jpeg",
+        imageUrl: blockexFoto,
         link: "https://github.com/GuillermoHualde/BLOCKEX_1.0",
         aspectRatio: "aspect-[9/16]",
         rotation: -2,
@@ -37,7 +41,7 @@ const PROJECTS: Project[] = [
         tech: ["Java", "SQL", "DAO Pattern", "Connection Pool"],
         description: "Gestor backend de datos académicos y conectividad SQL.",
         longDescription: "Implementación de patrones de arquitectura backend (DAO, Pool de conexiones JDBC) enfocada en la eficiencia en consultas y robustez en la persistencia de datos.",
-        imageUrl: "public/assets/JavaSql.jpg",
+        imageUrl: javaSqlFoto,
         link: "https://github.com/GuillermoHualde/PoolConexiones-Dao-etc",
         aspectRatio: "aspect-[4/3]",
         rotation: 2,
@@ -50,7 +54,7 @@ const PROJECTS: Project[] = [
         tech: ["Kotlin", "UI/UX Design", "Material 3"],
         description: "Plataforma móvil para exhibición de obras y piezas de arte.",
         longDescription: "Proyecto enfocado en la experiencia de usuario táctil, navegación fluida y maquetación de galerías dinámicas para creativos y diseñadores.",
-        imageUrl: "public/assets/PortFoliArt.jpeg",
+        imageUrl: portFoliArtFoto,
         link: "https://github.com/GuillermoHualde/PortFoliArt",
         aspectRatio: "aspect-[9/16]",
         rotation: -3,
@@ -63,7 +67,7 @@ const PROJECTS: Project[] = [
         tech: ["Java", "JavaFX", "Hibernate", "MySQL"],
         description: "Sistema de administración bibliotecaria con ORM.",
         longDescription: "Aplicación de escritorio completa construida con JavaFX e integración de ORM Hibernate para la gestión automatizada de préstamos, usuarios y catálogo.",
-        imageUrl: "public/assets/RegistroBiblioteca.PNG",
+        imageUrl:registroBibliotecaFoto,
         link: "https://github.com/GuillermoHualde/Biblioteca",
         aspectRatio: "aspect-[16/9]",
         rotation: 3,
@@ -76,7 +80,7 @@ const PROJECTS: Project[] = [
         tech: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
         description: "Web interactiva y responsive con diseño editorial.",
         longDescription: "Portafolio web con animación continua, combinación de estéticas editorial y técnica, componentes interactivos y arquitectura moderna.",
-        imageUrl: "public/assets/Portfolio.PNG",
+        imageUrl: portfolioFoto,
         link: "https://github.com/GuillermoHualde/Portfolio",
         aspectRatio: "aspect-[16/9]",
         rotation: -1,
