@@ -1,4 +1,9 @@
 import { motion } from "framer-motion";
+import blockexFoto from "../assets/BlockexFoto.jpeg";
+import javaSqlFoto from "../assets/JavaSql.jpg";
+import portFoliArtFoto from "../assets/PortFoliArt.jpeg";
+import registroBibliotecaFoto from "../assets/RegistroBiblioteca.png";
+import portfolioFoto from "../assets/Portfolio.png";
 
 interface ProjectCard {
     id: string;
@@ -15,7 +20,7 @@ const PROJECTS: ProjectCard[] = [
         id: "01",
         title: "BLOCKEX",
         category: "AndroidStudio App",
-        imageUrl: "src/assets/BlockexFoto.jpeg",
+        imageUrl: blockexFoto,
         link: "https://github.com/GuillermoHualde/BLOCKEX_1.0",
         aspectRatio: "aspect-[9/17]", // Aspect ratio vertical natural
         rotation: -4,
@@ -24,7 +29,7 @@ const PROJECTS: ProjectCard[] = [
         id: "02",
         title: "Aplicación insercción de Alumnos",
         category: "JAVA",
-        imageUrl: "src/assets/JavaSql.jpg",
+        imageUrl: javaSqlFoto,
         link: "https://github.com/GuillermoHualde/PoolConexiones-Dao-etc",
         aspectRatio: "aspect-[4/3]",
         rotation: 3,
@@ -33,7 +38,7 @@ const PROJECTS: ProjectCard[] = [
         id: "03",
         title: "PortFoliArt",
         category: "AndoidStudio App",
-        imageUrl: "src/assets/PortFoliArt.jpeg",
+        imageUrl: portFoliArtFoto,
         link: "https://github.com/GuillermoHualde/PortFoliArt",
         aspectRatio: "aspect-[9-17]",
         rotation: -6,
@@ -42,7 +47,7 @@ const PROJECTS: ProjectCard[] = [
         id: "04",
         title: "Biblioteca",
         category: "Java, JavaFX y Hibernate",
-        imageUrl: "src/assets/RegistroBiblioteca.PNG",
+        imageUrl: registroBibliotecaFoto,
         link: "https://github.com/GuillermoHualde/Biblioteca",
         aspectRatio: "aspect-[16/9]",
         rotation: 5,
@@ -51,7 +56,7 @@ const PROJECTS: ProjectCard[] = [
         id: "05",
         title: "Pagina web Portfolio",
         category: "TypeScript, React",
-        imageUrl: "src/assets/Portfolio.PNG",
+        imageUrl: portfolioFoto,
         link: "https://github.com/GuillermoHualde/Portfolio",
         aspectRatio: "aspect-[16/9]",
         rotation: 5,
@@ -105,12 +110,12 @@ export function ProjectCarouselSection() {
                             style={{ transform: `rotate(${item.rotation}deg)` }}
                             className="group relative flex-none hover:z-20 transition-transform duration-300 hover:scale-105"
                         >
-                            {/* TARJETA DE PROYECTO (Solo borde inferior) */}
+                            {/* TARJETA DE PROYECTO  */}
                             <div className={`w-64 sm:w-80 md:w-96 ${item.aspectRatio} bg-[#2A3735] border-b-2 border-[#3B5249] rounded-2xl p-4 shadow-2xl overflow-hidden flex flex-col justify-between group-hover:border-[#dd4027] transition-colors`}>
 
 
 
-                                {/* Imagen del proyecto (Sin escala de grises) */}
+                                {/* Imagen del proyecto */}
                                 <div className="relative w-full h-full rounded-lg overflow-hidden my-2">
                                     <img
                                         src={item.imageUrl}
@@ -119,7 +124,7 @@ export function ProjectCarouselSection() {
                                     />
                                 </div>
 
-                                {/* Pie de la tarjeta (Categoría abajo a la derecha) */}
+                                {/* Pie de la tarjeta  */}
                                 <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-2 group-hover:text-[#D9381E] transition-colors">
                                     <div className="flex items-center gap-1">
                                         <span>{item.title}</span>
