@@ -3,7 +3,7 @@ import blockexFoto from "../assets/BlockexFoto.jpeg";
 import javaSqlFoto from "../assets/JavaSql.jpg";
 import portFoliArtFoto from "../assets/PortFoliArt.jpeg";
 import registroBibliotecaFoto from "../assets/RegistroBiblioteca.png";
-import portfolioFoto from "../assets/Portfolio.png";
+import portfolioFoto from "../assets/PortfolioWeb.png";
 
 interface ProjectCard {
     id: string;
