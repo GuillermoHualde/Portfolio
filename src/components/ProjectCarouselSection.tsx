@@ -22,7 +22,7 @@ const PROJECTS: ProjectCard[] = [
         category: "AndroidStudio App",
         imageUrl: blockexFoto,
         link: "https://github.com/GuillermoHualde/BLOCKEX_1.0",
-        aspectRatio: "aspect-[9/17]", // Aspect ratio vertical natural
+        aspectRatio: "aspect-[9/17]",
         rotation: -4,
     },
     {
@@ -37,10 +37,10 @@ const PROJECTS: ProjectCard[] = [
     {
         id: "03",
         title: "PortFoliArt",
-        category: "AndoidStudio App",
+        category: "AndroidStudio App",
         imageUrl: portFoliArtFoto,
         link: "https://github.com/GuillermoHualde/PortFoliArt",
-        aspectRatio: "aspect-[9-17]",
+        aspectRatio: "aspect-[9/17]",
         rotation: -6,
     },
     {
@@ -66,10 +66,23 @@ const PROJECTS: ProjectCard[] = [
 const DOUBLE_PROJECTS = [...PROJECTS, ...PROJECTS];
 
 export function ProjectCarouselSection() {
+
+    const handleCardClick = (projectId: string) => {
+        // Disparar evento global para seleccionar el proyecto en ProjectsSelector
+        const event = new CustomEvent("select-project", { detail: { projectId } });
+        window.dispatchEvent(event);
+
+        // Desplazamiento suave hasta el selector de proyectos
+        const target = document.getElementById("explorador-proyectos");
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section className="bg-[#1E2827] text-[#f5ecc2] py-24 md:py-32 border-t border-[#3B5249]/40 overflow-hidden">
 
-            {/* SEPARADOR*/}
+            {/* SEPARADOR */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 mb-12">
                 <span className="flex items-center mb-12">
                     <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#3B5249]"></span>
@@ -84,8 +97,8 @@ export function ProjectCarouselSection() {
                     <h2 className="md:col-span-8 text-4xl sm:text-6xl font-medium tracking-tighter leading-none uppercase text-[#f5ecc2]">
                         Código & Diseño
                     </h2>
-                    <p className="md:col-span-4 font-mono text-6 text-[#f5ecc2] leading-relaxed">
-                        Haz clic en cualquier tarjeta para explorar el código fuente, la arquitectura y los detalles en GitHub.
+                    <p className="md:col-span-4 font-mono text-sm text-[#f5ecc2]/90 leading-relaxed">
+                        Haz clic en cualquier tarjeta para seleccionarla y explorar sus detalles y repositorio en GitHub.
                     </p>
                 </div>
             </div>
@@ -104,19 +117,17 @@ export function ProjectCarouselSection() {
                     }}
                 >
                     {DOUBLE_PROJECTS.map((item, index) => (
-                        <a
+                        <div
                             key={`${item.id}-${index}`}
-                            href={item.link}
+                            onClick={() => handleCardClick(item.id)}
                             style={{ transform: `rotate(${item.rotation}deg)` }}
-                            className="group relative flex-none hover:z-20 transition-transform duration-300 hover:scale-105"
+                            className="group relative flex-none cursor-pointer hover:z-20 transition-transform duration-300 hover:scale-105"
                         >
-                            {/* TARJETA DE PROYECTO  */}
+                            {/* TARJETA DE PROYECTO */}
                             <div className={`w-64 sm:w-80 md:w-96 ${item.aspectRatio} bg-[#2A3735] border-b-2 border-[#3B5249] rounded-2xl p-4 shadow-2xl overflow-hidden flex flex-col justify-between group-hover:border-[#dd4027] transition-colors`}>
 
-
-
                                 {/* Imagen del proyecto */}
-                                <div className="relative w-full h-full rounded-lg overflow-hidden my-2">
+                                <div className="relative w-full h-full rounded-lg overflow-hidden my-2 border border-[#3B5249]/50">
                                     <img
                                         src={item.imageUrl}
                                         alt={item.title}
@@ -124,11 +135,11 @@ export function ProjectCarouselSection() {
                                     />
                                 </div>
 
-                                {/* Pie de la tarjeta  */}
-                                <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-2 group-hover:text-[#D9381E] transition-colors">
+                                {/* Pie de la tarjeta */}
+                                <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-2 group-hover:text-[#dd4027] transition-colors">
                                     <div className="flex items-center gap-1">
                                         <span>{item.title}</span>
-                                        <span>↗</span>
+                                        <span>↓</span>
                                     </div>
                                     <span className="text-[10px] text-[#9DAFA9] uppercase font-normal tracking-wider">
                                         {item.category}
@@ -136,7 +147,7 @@ export function ProjectCarouselSection() {
                                 </div>
 
                             </div>
-                        </a>
+                        </div>
                     ))}
                 </motion.div>
             </div>

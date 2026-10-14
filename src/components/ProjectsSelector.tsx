@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import blockexFoto from "../assets/BlockexFoto.jpeg";
 import javaSqlFoto from "../assets/JavaSql.jpg";
 import portFoliArtFoto from "../assets/PortFoliArt.jpeg";
 import registroBibliotecaFoto from "../assets/RegistroBibliotecaFX.png";
 import portfolioFoto from "../assets/PortfolioWeb.png";
+
 interface Project {
     id: string;
     title: string;
@@ -15,8 +16,8 @@ interface Project {
     longDescription: string;
     imageUrl: string;
     link?: string;
-    aspectRatio: string; // Proporción independiente para las tarjetas del grid
-    rotation: number;    // Ligera inclinación estilo postal
+    aspectRatio: string;
+    rotation: number;
 }
 
 const PROJECTS: Project[] = [
@@ -67,7 +68,7 @@ const PROJECTS: Project[] = [
         tech: ["Java", "JavaFX", "Hibernate", "MySQL"],
         description: "Sistema de administración bibliotecaria con ORM.",
         longDescription: "Aplicación de escritorio completa construida con JavaFX e integración de ORM Hibernate para la gestión automatizada de préstamos, usuarios y catálogo.",
-        imageUrl:registroBibliotecaFoto,
+        imageUrl: registroBibliotecaFoto,
         link: "https://github.com/GuillermoHualde/Biblioteca",
         aspectRatio: "aspect-[16/9]",
         rotation: 3,
@@ -90,8 +91,23 @@ const PROJECTS: Project[] = [
 export function ProjectsSelector() {
     const [selectedProject, setSelectedProject] = useState<Project>(PROJECTS[0]);
 
+    // Escuchar la selección global emitida por el carrusel
+    useEffect(() => {
+        const handleProjectSelect = (e: Event) => {
+            const customEvent = e as CustomEvent<{ projectId: string }>;
+            const projectFound = PROJECTS.find((p) => p.id === customEvent.detail.projectId);
+            if (projectFound) {
+                setSelectedProject(projectFound);
+            }
+        };
+
+        window.addEventListener("select-project", handleProjectSelect);
+        return () => window.removeEventListener("select-project", handleProjectSelect);
+    }, []);
+
     return (
-        <section className="bg-[#1E2827] text-[#f5ecc2] py-24 md:py-32 border-t border-[#3B5249]/40">
+        /* ID necesario para el scroll automático desde el carrusel */
+        <section id="explorador-proyectos" className="bg-[#1E2827] text-[#f5ecc2] py-24 md:py-32 border-t border-[#3B5249]/40">
             <div className="max-w-7xl mx-auto px-6 md:px-12">
 
                 {/* SEPARADOR */}
@@ -110,7 +126,7 @@ export function ProjectsSelector() {
                     </h2>
                 </div>
 
-                {/* ESTRUCTURA PRINCIPAL: GRID MASONRY DE TARJETAS (IZQ) + FICHA DETALLADA (DER) */}
+                {/* ESTRUCTURA PRINCIPAL */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
                     {/* COLUMNA IZQUIERDA: MASONRY GRID */}
@@ -128,7 +144,6 @@ export function ProjectsSelector() {
                                             : "border-[#3B5249] hover:border-[#f5ecc2]/60"
                                     }`}
                                 >
-                                    {/* CONTENEDOR DE IMAGEN CON SU PROPORCIÓN EN LA TARJETA */}
                                     <div className={`relative w-full ${project.aspectRatio} rounded-lg overflow-hidden my-2 border border-[#3B5249]/50`}>
                                         <img
                                             src={project.imageUrl}
@@ -137,7 +152,6 @@ export function ProjectsSelector() {
                                         />
                                     </div>
 
-                                    {/* PIE DE LA TARJETA */}
                                     <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-3">
                                         <span className="group-hover:text-[#dd4027] transition-colors">
                                             {project.title}
@@ -162,7 +176,6 @@ export function ProjectsSelector() {
                                 transition={{ duration: 0.25 }}
                                 className="space-y-6"
                             >
-                                {/* FICHA TÉCNICA */}
                                 <div className="flex flex-wrap justify-between items-center gap-4 border-b border-[#3B5249]/60 pb-4">
                                     <span className="font-mono text-xs text-[#dd4027] font-bold uppercase">
                                         {selectedProject.category}
@@ -172,7 +185,6 @@ export function ProjectsSelector() {
                                     </span>
                                 </div>
 
-                                {/* VISTA PREVIA PRINCIPAL CORREGIDA */}
                                 <div className="relative w-full h-72 sm:h-80 rounded-xl overflow-hidden border border-[#3B5249]/80 bg-[#1E2827] flex items-center justify-center p-2">
                                     <img
                                         src={selectedProject.imageUrl}
@@ -181,7 +193,6 @@ export function ProjectsSelector() {
                                     />
                                 </div>
 
-                                {/* DESCRIPCIÓN */}
                                 <div className="space-y-3">
                                     <h3 className="text-xl sm:text-3xl font-medium uppercase tracking-tight text-[#f5ecc2]">
                                         {selectedProject.title}
@@ -194,7 +205,6 @@ export function ProjectsSelector() {
                                     </p>
                                 </div>
 
-                                {/* TECNOLOGÍAS */}
                                 <div>
                                     <span className="font-mono text-xs text-[#9DAFA9] block mb-3 uppercase tracking-wider font-semibold">
                                         STACK TECNOLÓGICO:
@@ -211,7 +221,6 @@ export function ProjectsSelector() {
                                     </div>
                                 </div>
 
-                                {/* ENLACE A GITHUB */}
                                 {selectedProject.link && (
                                     <div className="pt-4 border-t border-[#3B5249]/60 flex justify-end">
                                         <a
@@ -221,7 +230,6 @@ export function ProjectsSelector() {
                                             className="inline-flex items-center gap-2 font-mono text-xs uppercase bg-[#dd4027] text-[#f5ecc2] hover:bg-[#f5ecc2] hover:text-[#1E2827] px-5 py-2.5 rounded-xl transition-all cursor-pointer font-bold"
                                         >
                                             <span>Explorar Repositorio</span>
-
                                         </a>
                                     </div>
                                 )}
