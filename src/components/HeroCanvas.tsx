@@ -51,7 +51,7 @@ export function HeroCanvas() {
                     </div>
 
                     {/* Tarjeta 3 - Foto Completa  */}
-                    <div className="col-span-2 relative w-full aspect-[4/3] max-h-64 rounded-xl overflow-hidden bg-[#547076]/20 flex items-center justify-center p-2">
+                    <div className="col-span-2 relative w-full aspect-[4/3] max-h-64 rounded-xl overflow-hidden  flex items-center justify-center p-2">
                         <img
                             src={GuilleFoto}
                             alt="Guillermo García"
