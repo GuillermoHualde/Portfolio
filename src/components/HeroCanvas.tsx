@@ -50,8 +50,8 @@ export function HeroCanvas() {
                         <span className="text-xs font-sans font-medium">Kotlin & Android</span>
                     </div>
 
-                    {/* Tarjeta 3 - Foto Completa (Ajustada a la rejilla con aspecto vertical) */}
-                    <div className="col-span-2 relative w-full aspect-[4/3] max-h-64 rounded-xl overflow-hidden shadow-md border border-[#3B5249]/40 bg-[#547076]/20 flex items-center justify-center p-2">
+                    {/* Tarjeta 3 - Foto Completa  */}
+                    <div className="col-span-2 relative w-full aspect-[4/3] max-h-64 rounded-xl overflow-hidden bg-[#547076]/20 flex items-center justify-center p-2">
                         <img
                             src={GuilleFoto}
                             alt="Guillermo García"
