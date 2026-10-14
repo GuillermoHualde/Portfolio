@@ -26,7 +26,7 @@ export function AboutMeSection() {
                             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter leading-[1.02] uppercase">
                                 Desarrollador  <br />
                                 <span className="text-[#547076] italic font-normal">Frontend</span> y <br />
-                                <span className="text-[#dd4027]">y Multiplataforma.</span>
+                                <span className="text-[#dd4027]"> Multiplataforma.</span>
                             </h2>
                         </div>
 
