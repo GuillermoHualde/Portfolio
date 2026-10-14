@@ -10,6 +10,7 @@ export function HeroCanvas() {
         offset: ["start start", "end end"],
     });
 
+    // Animaciones Parallax para la vista de escritorio
     const card1Y = useTransform(scrollYProgress, [0, 1], [0, -320]);
     const card1Rotate = useTransform(scrollYProgress, [0, 1], [-8, -22]);
 
@@ -21,37 +22,37 @@ export function HeroCanvas() {
 
     return (
         <section ref={containerRef} className="relative min-h-screen lg:h-[250vh]">
-            <div className="lg:sticky lg:top-0 min-h-screen w-full overflow-hidden flex flex-col lg:flex-row items-center justify-between px-5 sm:px-8 md:px-12 pt-24 sm:pt-28 lg:pt-16 pb-8">
+            <div className="lg:sticky lg:top-0 min-h-screen w-full overflow-hidden flex flex-col lg:flex-row items-center lg:justify-between px-5 sm:px-8 md:px-12 pt-20 lg:pt-16 pb-6">
 
-                {/* LADO IZQUIERDO: TEXTO PRINCIPAL (Reducido espacio y márgenes) */}
+                {/* LADO IZQUIERDO: TEXTO PRINCIPAL */}
                 <div className="z-10 max-w-2xl w-full text-left">
-                    <p className="font-sans text-xs sm:text-base md:text-2xl text-neutral-400 mb-2 font-normal tracking-tight pl-12 sm:pl-0">
+                    <p className="font-sans text-xs sm:text-base md:text-2xl text-neutral-400 mb-2 font-normal tracking-tight pl-10 sm:pl-0">
                         Guillermo García Hualde.
                     </p>
 
-                    <h1 className="text-3xl sm:text-5xl lg:text-8xl font-medium tracking-tighter leading-[1.0] sm:leading-[0.9] uppercase select-none">
-                        <span className="text-[#547076] italic font-normal">Desarrollador </span> De Aplicaciones <br />
-                        <span className="text-[#4A5E5E]">Multiplataforma</span> y <br />
+                    <h1 className="text-3xl sm:text-5xl lg:text-8xl font-medium tracking-tighter leading-[1.05] sm:leading-[0.9] uppercase select-none">
+                        <span className="text-[#547076] italic font-normal">Desarrollador </span> De Aplicaciones <br className="hidden sm:inline" />
+                        <span className="text-[#4A5E5E]">Multiplataforma</span> y <br className="hidden sm:inline" />
                         Diseñador <span className="text-[#dd4027]">Gráfico.</span>
                     </h1>
                 </div>
 
-                {/* VISTA MÓVIL: TARJETAS Y FOTO COMPLETA */}
-                <div className="lg:hidden w-full mt-6 grid grid-cols-2 gap-3 items-stretch justify-center">
+                {/* VISTA MÓVIL: TARJETAS Y FOTO COMPLETA (AJUSTADAS SIN ESPACIO SOBRANTE) */}
+                <div className="lg:hidden w-full mt-4 grid grid-cols-2 gap-3 items-stretch justify-center">
                     {/* Tarjeta 1 - Java */}
-                    <div className="bg-[#547076] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono -rotate-2 shadow-md h-28">
+                    <div className="bg-[#547076] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono -rotate-2 shadow-md h-24">
                         <span className="text-[9px] font-bold uppercase tracking-wider">Proyectos en:</span>
-                        <span className="text-lg font-bold tracking-tighter">JAVA</span>
+                        <span className="text-base font-bold tracking-tighter">JAVA</span>
                     </div>
 
                     {/* Tarjeta 2 - Android */}
-                    <div className="bg-[#dd4027] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono text-xs rotate-2 shadow-md h-28">
+                    <div className="bg-[#dd4027] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono text-xs rotate-2 shadow-md h-24">
                         <span className="text-[9px] uppercase tracking-wider">Proyectos en:</span>
                         <span className="text-xs font-sans font-medium">Kotlin & Android</span>
                     </div>
 
-                    {/* Tarjeta 3 - Foto Completa  */}
-                    <div className="col-span-2 relative w-full aspect-[4/3] max-h-64 rounded-xl overflow-hidden  flex items-center justify-center p-2">
+                    {/* Tarjeta 3 - Foto Completa */}
+                    <div className="col-span-2 relative w-full h-48 rounded-xl overflow-hidden flex items-center justify-center">
                         <img
                             src={GuilleFoto}
                             alt="Guillermo García"
