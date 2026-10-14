@@ -91,7 +91,7 @@ const PROJECTS: Project[] = [
 export function ProjectsSelector() {
     const [selectedProject, setSelectedProject] = useState<Project>(PROJECTS[0]);
 
-    // Escuchar la selección global emitida por el carrusel
+    // Escuchar la selección desde el carrusel superior
     useEffect(() => {
         const handleProjectSelect = (e: Event) => {
             const customEvent = e as CustomEvent<{ projectId: string }>;
@@ -105,68 +105,148 @@ export function ProjectsSelector() {
         return () => window.removeEventListener("select-project", handleProjectSelect);
     }, []);
 
+    // Componente reutilizable con la información técnica detallada
+    const ProjectDetailContent = ({ project }: { project: Project }) => (
+        <div className="space-y-5">
+            <div className="flex flex-wrap justify-between items-center gap-4 border-b border-[#3B5249]/60 pb-3">
+                <span className="font-mono text-xs text-[#dd4027] font-bold uppercase">
+                    {project.category}
+                </span>
+                <span className="font-mono text-xs text-[#9DAFA9] uppercase">
+                    // {project.year}
+                </span>
+            </div>
+
+            <div className="relative w-full h-60 sm:h-80 rounded-xl overflow-hidden border border-[#3B5249]/80 bg-[#1E2827] flex items-center justify-center p-2">
+                <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-full object-contain contrast-125 rounded-lg"
+                />
+            </div>
+
+            <div className="space-y-2">
+                <h3 className="text-xl sm:text-3xl font-medium uppercase tracking-tight text-[#f5ecc2]">
+                    {project.title}
+                </h3>
+                <p className="font-mono text-xs sm:text-sm text-[#f5ecc2]/90 leading-relaxed">
+                    {project.description}
+                </p>
+                <p className="font-mono text-[11px] sm:text-xs text-[#9DAFA9] leading-relaxed pt-2 border-l-2 border-[#dd4027] pl-3 sm:pl-4">
+                    {project.longDescription}
+                </p>
+            </div>
+
+            <div>
+                <span className="font-mono text-[10px] sm:text-xs text-[#9DAFA9] block mb-2 uppercase tracking-wider font-semibold">
+                    STACK TECNOLÓGICO:
+                </span>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    {project.tech.map((t, i) => (
+                        <span
+                            key={i}
+                            className="font-mono text-[10px] sm:text-xs bg-[#1E2827] text-[#f5ecc2] border border-[#3B5249]/60 px-2.5 py-1 rounded-md"
+                        >
+                            {t}
+                        </span>
+                    ))}
+                </div>
+            </div>
+
+            {project.link && (
+                <div className="pt-3 border-t border-[#3B5249]/60 flex justify-end">
+                    <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-mono text-xs uppercase bg-[#dd4027] text-[#f5ecc2] hover:bg-[#f5ecc2] hover:text-[#1E2827] px-4 sm:px-5 py-2.5 rounded-xl transition-all cursor-pointer font-bold"
+                    >
+                        <span>Explorar Repositorio</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+            )}
+        </div>
+    );
+
     return (
-        /* ID necesario para el scroll automático desde el carrusel */
-        <section id="explorador-proyectos" className="bg-[#1E2827] text-[#f5ecc2] py-24 md:py-32 border-t border-[#3B5249]/40">
-            <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <section id="explorador-proyectos" className="bg-[#1E2827] text-[#f5ecc2] py-16 sm:py-24 md:py-32 border-t border-[#3B5249]/40">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
 
                 {/* SEPARADOR */}
-                <span className="flex items-center mb-12">
+                <span className="flex items-center mb-8 sm:mb-12">
                     <span className="h-px flex-1 bg-gradient-to-r from-transparent to-[#3B5249]"></span>
-                    <span className="shrink-0 px-6 font-mono text-xs uppercase tracking-widest text-[#f5ecc2]">
+                    <span className="shrink-0 px-3 sm:px-6 font-mono text-[10px] sm:text-xs uppercase tracking-widest text-[#f5ecc2]">
                         EXPLORADOR DE PROYECTOS
                     </span>
                     <span className="h-px flex-1 bg-gradient-to-l from-transparent to-[#3B5249]"></span>
                 </span>
 
-                {/* ENCABEZADO CENTRADO */}
-                <div className="mb-16 text-center">
-                    <h2 className="text-4xl sm:text-6xl font-medium tracking-tighter uppercase text-[#f5ecc2]">
+                {/* ENCABEZADO */}
+                <div className="mb-10 sm:mb-16 text-center">
+                    <h2 className="text-3xl sm:text-6xl font-medium tracking-tighter uppercase text-[#f5ecc2]">
                         Selección de <span className="text-[#dd4027]">Proyectos</span>
                     </h2>
                 </div>
 
-                {/* ESTRUCTURA PRINCIPAL */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                {/* ESTRUCTURA ADAPTADA */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
 
-                    {/* COLUMNA IZQUIERDA: MASONRY GRID */}
-                    <div className="lg:col-span-6 columns-1 sm:columns-2 gap-4 space-y-4">
+                    {/* COLUMNA DE TARJETAS (En móvil se listan en 1 sola columna) */}
+                    <div className="lg:col-span-6 space-y-4">
                         {PROJECTS.map((project) => {
                             const isSelected = selectedProject.id === project.id;
                             return (
-                                <div
-                                    key={project.id}
-                                    style={{ transform: `rotate(${project.rotation}deg)` }}
-                                    onClick={() => setSelectedProject(project)}
-                                    className={`break-inside-avoid cursor-pointer rounded-2xl p-4 bg-[#2A3735] border-b-2 transition-all duration-300 hover:scale-[1.02] hover:z-10 group ${
-                                        isSelected
-                                            ? "border-[#dd4027] shadow-2xl ring-1 ring-[#dd4027]/50"
-                                            : "border-[#3B5249] hover:border-[#f5ecc2]/60"
-                                    }`}
-                                >
-                                    <div className={`relative w-full ${project.aspectRatio} rounded-lg overflow-hidden my-2 border border-[#3B5249]/50`}>
-                                        <img
-                                            src={project.imageUrl}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover contrast-125 transition-transform duration-500 group-hover:scale-105"
-                                        />
+                                <div key={project.id} className="w-full">
+                                    {/* Tarjeta de Proyecto */}
+                                    <div
+                                        style={{ transform: `rotate(${project.rotation}deg)` }}
+                                        onClick={() => setSelectedProject(project)}
+                                        className={`cursor-pointer rounded-2xl p-3 sm:p-4 bg-[#2A3735] border-b-2 transition-all duration-300 hover:scale-[1.01] group ${
+                                            isSelected
+                                                ? "border-[#dd4027] shadow-2xl ring-1 ring-[#dd4027]/50"
+                                                : "border-[#3B5249] hover:border-[#f5ecc2]/60"
+                                        }`}
+                                    >
+                                        <div className={`relative w-full ${project.aspectRatio} max-h-72 rounded-lg overflow-hidden my-1 sm:my-2 border border-[#3B5249]/50`}>
+                                            <img
+                                                src={project.imageUrl}
+                                                alt={project.title}
+                                                className="w-full h-full object-cover contrast-125 transition-transform duration-500 group-hover:scale-105"
+                                            />
+                                        </div>
+
+                                        <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-2">
+                                            <span className="group-hover:text-[#dd4027] transition-colors">
+                                                {project.title}
+                                            </span>
+                                            <span className="text-[10px] text-[#9DAFA9] uppercase font-normal">
+                                                {project.category}
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div className="flex justify-between items-end font-mono text-xs font-bold text-[#f5ecc2] mt-3">
-                                        <span className="group-hover:text-[#dd4027] transition-colors">
-                                            {project.title}
-                                        </span>
-                                        <span className="text-[10px] text-[#9DAFA9] uppercase font-normal">
-                                            {project.category}
-                                        </span>
-                                    </div>
+                                    {/* VISTA DESPLEGABLE EN MÓVIL (Aparece justo debajo de la tarjeta seleccionada) */}
+                                    <AnimatePresence>
+                                        {isSelected && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: "auto" }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                                className="lg:hidden mt-3 bg-[#2A3735] border-2 border-[#dd4027] rounded-2xl p-4 sm:p-6 shadow-xl overflow-hidden"
+                                            >
+                                                <ProjectDetailContent project={selectedProject} />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             );
                         })}
                     </div>
 
-                    {/* COLUMNA DERECHA: FICHA DETALLADA */}
-                    <div className="lg:col-span-6 sticky top-28 bg-[#2A3735] border-b-2 border-[#3B5249] rounded-2xl p-6 sm:p-8">
+                    {/* COLUMNA DE FICHA DETALLADA (Exclusiva para ordenadores/pantallas grandes LG) */}
+                    <div className="hidden lg:block lg:col-span-6 sticky top-28 bg-[#2A3735] border-b-2 border-[#3B5249] rounded-2xl p-8">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={selectedProject.id}
@@ -174,65 +254,8 @@ export function ProjectsSelector() {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -12 }}
                                 transition={{ duration: 0.25 }}
-                                className="space-y-6"
                             >
-                                <div className="flex flex-wrap justify-between items-center gap-4 border-b border-[#3B5249]/60 pb-4">
-                                    <span className="font-mono text-xs text-[#dd4027] font-bold uppercase">
-                                        {selectedProject.category}
-                                    </span>
-                                    <span className="font-mono text-xs text-[#9DAFA9] uppercase">
-                                        // {selectedProject.year}
-                                    </span>
-                                </div>
-
-                                <div className="relative w-full h-72 sm:h-80 rounded-xl overflow-hidden border border-[#3B5249]/80 bg-[#1E2827] flex items-center justify-center p-2">
-                                    <img
-                                        src={selectedProject.imageUrl}
-                                        alt={selectedProject.title}
-                                        className="w-full h-full object-contain contrast-125 rounded-lg"
-                                    />
-                                </div>
-
-                                <div className="space-y-3">
-                                    <h3 className="text-xl sm:text-3xl font-medium uppercase tracking-tight text-[#f5ecc2]">
-                                        {selectedProject.title}
-                                    </h3>
-                                    <p className="font-mono text-sm text-[#f5ecc2]/90 leading-relaxed">
-                                        {selectedProject.description}
-                                    </p>
-                                    <p className="font-mono text-xs text-[#9DAFA9] leading-relaxed pt-2 border-l-2 border-[#dd4027] pl-4">
-                                        {selectedProject.longDescription}
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <span className="font-mono text-xs text-[#9DAFA9] block mb-3 uppercase tracking-wider font-semibold">
-                                        STACK TECNOLÓGICO:
-                                    </span>
-                                    <div className="flex flex-wrap gap-2">
-                                        {selectedProject.tech.map((t, i) => (
-                                            <span
-                                                key={i}
-                                                className="font-mono text-xs bg-[#1E2827] text-[#f5ecc2] border border-[#3B5249]/60 px-3 py-1.5 rounded-md"
-                                            >
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {selectedProject.link && (
-                                    <div className="pt-4 border-t border-[#3B5249]/60 flex justify-end">
-                                        <a
-                                            href={selectedProject.link}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 font-mono text-xs uppercase bg-[#dd4027] text-[#f5ecc2] hover:bg-[#f5ecc2] hover:text-[#1E2827] px-5 py-2.5 rounded-xl transition-all cursor-pointer font-bold"
-                                        >
-                                            <span>Explorar Repositorio</span>
-                                        </a>
-                                    </div>
-                                )}
+                                <ProjectDetailContent project={selectedProject} />
                             </motion.div>
                         </AnimatePresence>
                     </div>
