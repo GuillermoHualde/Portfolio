@@ -43,9 +43,9 @@ export function HeroCanvas() {
                         <span className="text-base font-bold tracking-tighter">JAVA</span>
                     </div>
 
-                    <div className="bg-[#dd4027] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono text-xs rotate-2 shadow-md h-24">
-                        <span className="text-[9px] uppercase tracking-wider">Proyectos en:</span>
-                        <span className="text-xs font-sans font-medium">Kotlin & Android</span>
+                    <div className="bg-[#dd4027] rounded-xl p-3 flex flex-col justify-between text-[#f5ecc2] font-mono rotate-2 shadow-md h-24">
+                        <span className="text-[9px] font-bold uppercase tracking-wider">Proyectos en:</span>
+                        <span className="text-base font-bold tracking-tighter">Kotlin & Android</span>
                     </div>
 
                     <div className="col-span-2 relative w-full h-44 sm:h-52 rounded-xl overflow-hidden flex items-center justify-center">
@@ -65,7 +65,7 @@ export function HeroCanvas() {
                     >
                         <div className="w-full h-full bg-[#547076] rounded-lg p-4 flex flex-col justify-between text-[#f5ecc2] font-mono shadow-2xl">
                             <span className="text-xs font-bold">Proyectos en :</span>
-                            <span className="text-2xl font-bold tracking-tighter">JAVA</span>
+                            <span className="text-2xl font-bold tracking-tighter">React y Java</span>
                         </div>
                     </motion.div>
 
@@ -73,9 +73,9 @@ export function HeroCanvas() {
                         style={{ y: card2Y, rotate: card2Rotate }}
                         className="absolute top-[35%] right-[10%] w-72 aspect-[4/3] rounded-2xl p-4"
                     >
-                        <div className="w-full h-full bg-[#dd4027] rounded-lg p-4 flex flex-col justify-between text-[#f5ecc2] font-mono text-xs shadow-2xl">
-                            <span>Proyectos en :</span>
-                            <span className="text-lg font-sans">Kotlin y Android Studio</span>
+                        <div className="w-full h-full bg-[#dd4027] rounded-lg p-4 flex flex-col justify-between text-[#f5ecc2] font-mono shadow-2xl">
+                            <span  className="text-xs font-bold" >Proyectos en :</span>
+                            <span className="text-2xl font-bold tracking-tighter">Kotlin y Android Studio</span>
                         </div>
                     </motion.div>
 

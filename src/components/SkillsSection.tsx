@@ -101,9 +101,7 @@ export function SkillsSection() {
                         >
                             <h3 className="font-mono text-base uppercase font-bold text-[#dd4027] mb-5 flex justify-between items-center">
                                 <span>{cat.title}</span>
-                                <span className="text-xs text-[#547076] group-hover:text-[#f5ecc2]">
-                                    /{cat.skills.length}
-                                </span>
+
                             </h3>
 
                             <div className="flex flex-wrap gap-2.5">
