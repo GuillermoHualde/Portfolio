@@ -40,22 +40,22 @@ export function ProfileStory() {
                                 <span className="text-[#dd4027] text-xs">◆</span> React & TypeScript
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> JavaScript (ES6+)
+                                <span className="text-[#dd4027] text-xs">◆</span> TailwindCSS / SASS
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> Tailwind CSS / SASS
+                                <span className="text-[#dd4027] text-xs">◆</span> Java / Kotlin / C#
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> HTML5 & CSS3 Responsive
+                                <span className="text-[#dd4027] text-xs">◆</span> Spring Boot / JavaFX / Jetpack Compose
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> REST APIs & Git/GitHub
+                                <span className="text-[#dd4027] text-xs">◆</span> SQL / MongoDB
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> Spring Boot & JavaFX
+                                <span className="text-[#dd4027] text-xs">◆</span> REST APIs / Git / GitHub
                             </li>
                             <li className="flex items-center gap-2">
-                                <span className="text-[#dd4027] text-xs">◆</span> C# & SQL / AWS
+                                <span className="text-[#dd4027] text-xs">◆</span> Docker / AWS
                             </li>
                         </ul>
                     </div>
