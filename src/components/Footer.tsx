@@ -8,6 +8,26 @@ export function Footer() {
                 <div className="flex gap-6">
                     <NavLink to="/portfolio" className="hover:text-[#a84222]">PORTFOLIO</NavLink>
                     <NavLink to="/bio" className="hover:text-[#a84222]">BIO</NavLink>
+
+                    <a
+                        href="/CV_Guillermo_Garcia.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[#a84222] transition-colors cursor-pointer text-[#dd4027] font-semibold"
+                    >
+                        CV
+                    </a>
+
+                    <a
+                        href="/CV_Guillermo_Garcia_Ingles.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-[#a84222] transition-colors cursor-pointer text-[#dd4027] font-semibold"
+                    >
+                        CV Inglés
+                    </a>
+
+
                     <a
                         href="https://mail.google.com/mail/?view=cm&fs=1&to=guillermo.hualde@gmail.com"
                         target="_blank"
