@@ -20,12 +20,12 @@ export function ProfileStory() {
                             PERFIL
                         </span>
                         <p className="text-xl sm:text-2xl font-normal leading-relaxed mb-6 text-[#f5ecc2]">
-                            Desarrollador Frontend con formación en Aplicaciones Multiplataforma y un sólido trasfondo en
+                            Desarrollador FullStack con formación en Aplicaciones Multiplataforma y un sólido trasfondo en
                             diseño gráfico y Bellas Artes.
                         </p>
                         <p className="font-mono text-base text-[#9DAFA9] leading-relaxed font-normal">
-                            Especializado en transformar diseños complejos en interfaces web interactivas, accesibles y
-                            optimizadas con TypeScript y React. Apasionado por la experiencia de usuario (UI/UX) y el
+                            Especializado en transformar diseños complejos en interfaces  accesibles y
+                            optimizadas. Apasionado por la experiencia de usuario (UI/UX) y el
                             desarrollo de componentes reutilizables.
                         </p>
                     </div>

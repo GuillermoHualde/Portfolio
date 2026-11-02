@@ -25,7 +25,7 @@ export function AboutMeSection() {
                             </p>
                             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tighter leading-[1.02] uppercase">
                                 Desarrollador  <br />
-                                <span className="text-[#547076] italic font-normal">Frontend</span> y <br />
+                                <span className="text-[#547076] italic font-normal">FullStack</span> y <br />
                                 <span className="text-[#dd4027]"> Multiplataforma.</span>
                             </h2>
                         </div>
@@ -36,9 +36,11 @@ export function AboutMeSection() {
                                 Desarrollador especializado en <strong className="text-[#4A5E5E] font-semibold">Aplicaciones Multiplataforma (DAM)</strong> con un sólido trasfondo en <strong className="text-[#dd4027] font-semibold">Bellas Artes, Grabado y Diseño Gráfico</strong>.
                             </p>
                             <p className="text-[#547076]">
-                                Soy una persona apasionada tanto por
-                                el mundo del arte como por la informática. Soy multidisciplinar y creativo e intento compaginar los dos mundos,
-                                emprendiendo tanto en el trabajo como en mis proyectos personales.
+                                Especializado en transformar diseños
+                                complejos en interfaces interactivas,
+                                accesibles y optimizadas. Apasionado
+                                por la experiencia de usuario (UI/UX) y el
+                                desarrollo de componentes reutilizables.
                             </p>
                         </div>
 
